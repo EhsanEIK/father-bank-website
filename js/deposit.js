@@ -1,6 +1,12 @@
 document.getElementById('btn-deposit').addEventListener('click', function () {
     const depositField = document.getElementById('deposit-field');
     const depositAmount = parseFloat(depositField.value);
+    depositField.value = '';
+
+    if (isNaN(depositAmount)) {
+        alert('Please provide a number');
+        return;
+    }
 
     const depositBalanceField = document.getElementById('deposit-balance');
     const previousDepositBalance = parseFloat(depositBalanceField.innerText);
@@ -14,4 +20,5 @@ document.getElementById('btn-deposit').addEventListener('click', function () {
 
     totalBalance = totalBalance + depositAmount;
     totalBalanceField.innerText = totalBalance;
+
 });
